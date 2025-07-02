@@ -1,15 +1,47 @@
 ﻿using System.ComponentModel.Design;
 using System.Numerics;
 using System.Xml.Linq;
-using math;
 
 var games = new List<string>();
 bool isGameOn = true;
 var date = DateTime.Now;
 
-var menu = new Menu();
 string name = getName();
-Menu(name);
+
+while (isGameOn)
+{
+    Console.WriteLine("Choose an option:");
+    Console.WriteLine("1 - Addition");
+    Console.WriteLine("2 - Subtraction");
+    Console.WriteLine("3 - Multiplication");
+    Console.WriteLine("4 - Division");
+    Console.WriteLine("5 - View History");
+    Console.WriteLine("6 - Quit");
+
+    var choice = Console.ReadLine();
+
+    switch (choice)
+    {
+        case "1":
+            additionGame("Addition Game");
+            break;
+        case "2":
+            substractionGame("Subtraction Game");
+            break;
+        case "3":
+            multiplicationGame("Multiplication Game");
+            break;
+        case "4":
+            DivsionGame("Division Game");
+            break;
+        case "5":
+            getGames();
+            break;
+        case "6":
+            isGameOn = false;
+            break;
+    }
+}
 
 string getName()
 {
@@ -23,7 +55,7 @@ void getGames()
 {
     Console.WriteLine("------------------");
     Console.WriteLine("Game history:");
-    foreach(var game in games)
+    foreach (var game in games)
     {
         Console.WriteLine(game);
     }
@@ -140,7 +172,7 @@ void multiplicationGame(string message)
     }
     Console.WriteLine($"the game is over your final score is : {score}");
     Console.ReadKey();
-    games.Add($"{DateTime.Now}-substraction score: {score}");
+    games.Add($"{DateTime.Now}-multiplication score: {score}");
 }
 void DivsionGame(string message)
 {
@@ -181,7 +213,5 @@ void DivsionGame(string message)
     }
     Console.WriteLine($"the game is over your final score is : {score}");
     Console.ReadKey();
-    games.Add($"{DateTime.Now}-substraction score: {score}");
+    games.Add($"{DateTime.Now}-division score: {score}");
 }
-
-
